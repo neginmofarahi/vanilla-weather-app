@@ -3,10 +3,11 @@ function displayTemp(response) {
   let strong = document.querySelector("strong");
   let humidity = document.querySelector("#humidity");
   let wind = document.querySelector("#wind");
+  let state = document.querySelector("#weather-state");
   strong.innerHTML = Math.round(response.data.main.temp);
-  console.log(response.data.main.humidity);
   humidity.innerHTML = Math.round(response.data.main.humidity);
   wind.innerHTML = Math.round(response.data.wind.speed);
+  state.innerHTML = response.data.weather.description;
 }
 
 function search(event) {
@@ -15,6 +16,30 @@ function search(event) {
   let enteredCity = document.querySelector("#search-city");
   h1.innerHTML = enteredCity.value;
 }
+
+function showTime(Date) {
+  let days = [
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+    "Sunday",
+  ];
+  let day = days[now.getDay()];
+  let hour = now.getHours();
+  console.log(hour);
+  let min = now.getMinutes();
+  console.log(min);
+  let htmlDay = document.querySelector("#day");
+  let htmlHour = document.querySelector("#hour");
+  let htmlMin = document.querySelector("#min");
+  htmlDay.innerHTML = day;
+  htmlHour.innerHTML = hour;
+  htmlMin.innerHTML = min;
+}
+
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", search);
 
@@ -24,3 +49,7 @@ let apiURL = `https://api.openweathermap.org/data/2.5/weather?q=tokyo&appid=${ap
 console.log(apiURL);
 
 axios.get(apiURL).then(displayTemp);
+
+let now = new Date();
+let time = document.querySelector("#time");
+time.innerHTML = showTime(now);
