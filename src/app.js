@@ -1,4 +1,5 @@
 function displayTemp(response) {
+  //let apiURL = function
   let strong = document.querySelector("strong");
   let humidity = document.querySelector("#humidity");
   let wind = document.querySelector("#wind");
@@ -18,8 +19,8 @@ let form = document.querySelector("#search-form");
 form.addEventListener("submit", search);
 
 let apiKey = "7d5433d322af5ac78f642274f8113911";
-//let form;
-let apiURL = `https://api.openweathermap.org/data/2.5/weather?q=sydney&appid=${apiKey}&units=metric`;
+//let city = document.querySelector("#search-city").value;
+let apiURL = `https://api.openweathermap.org/data/2.5/weather?q=tokyo&appid=${apiKey}&units=metric`;
 console.log(apiURL);
 
 axios.get(apiURL).then(displayTemp);
