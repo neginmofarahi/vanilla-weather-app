@@ -22,7 +22,7 @@ ul {
   padding: 10px;
   margin: 0;
   padding-top: 0px;
-  padding-bottom: 0px;
+  padding-bottom: 5px;
   color: #70757a;
 }
 .weather-ul {
@@ -34,6 +34,7 @@ strong {
   font-weight: 400;
   position: relative;
   margin-top: 100px;
+  margin-left: -8px;
 }
 small {
   position: relative;
@@ -41,9 +42,8 @@ small {
 }
 img {
   position: relative;
-  padding-left: 18px;
-  padding-top: 0px;
-  margin-top: 0px;
+  margin-left: -7px;
+  margin-top: -25px;
 }
 
 input[type="search"] {
