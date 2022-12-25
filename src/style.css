@@ -6,7 +6,7 @@ body {
   border-radius: 20px;
   margin: 0 auto;
   margin-top: 25px;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
   padding-top: 20px;
   max-width: 600px;
 }
@@ -22,27 +22,28 @@ ul {
   padding: 10px;
   margin: 0;
   padding-top: 0px;
+  padding-bottom: 0px;
   color: #70757a;
 }
-small,
-strong {
-  padding-top: 10px;
+.weather-ul {
   margin-top: 10px;
 }
+
 strong {
-  font-size: 36px;
-  font-weight: 300;
+  font-size: 48px;
+  font-weight: 400;
+  position: relative;
+  margin-top: 100px;
 }
 small {
   position: relative;
-  padding-top: 0px;
-  top: -16px;
+  top: -22px;
 }
 img {
+  position: relative;
   padding-left: 18px;
   padding-top: 0px;
   margin-top: 0px;
-  padding-left: 10px;
 }
 
 input[type="search"] {
@@ -80,4 +81,5 @@ input[type="submit"]:hover {
 }
 .open-source {
   color: #70757a;
+  margin: 10px;
 }
