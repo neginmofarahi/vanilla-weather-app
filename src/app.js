@@ -1,20 +1,12 @@
 function displayTemp(response) {
-  let h1 = document.querySelector("h1");
   let strong = document.querySelector("strong");
   let humidity = document.querySelector("#humidity");
   let wind = document.querySelector("#wind");
   let state = document.querySelector("#weather-state");
-  let icon = document.querySelector("#relevent-icon");
-  h1.innerHTML = response.data.name;
   strong.innerHTML = Math.round(response.data.main.temp);
   humidity.innerHTML = Math.round(response.data.main.humidity);
   wind.innerHTML = Math.round(response.data.wind.speed);
   state.innerHTML = response.data.weather[0].description;
-  icon.setAttribute(
-    "src",
-    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
-  );
-  icon.setAttribute("alt", response.data.weather[0].descriptions);
 }
 
 function search(event) {
