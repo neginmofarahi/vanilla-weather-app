@@ -45,6 +45,12 @@ function showTime(Date) {
   let date = now.getDate();
   let hour = now.getHours();
   let min = now.getMinutes();
+  if (hour < 10) {
+    hour = `0${hour}`;
+  }
+  if (min < 10) {
+    min = `0${min}`;
+  }
   let dayElement = document.querySelector("#current-date");
   let timeElement = document.querySelector("#current-time");
   dayElement.innerHTML = `${day}, ${month} ${date}th`;

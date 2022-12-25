@@ -6,6 +6,7 @@ body {
   border-radius: 20px;
   margin: 0 auto;
   margin-top: 25px;
+  margin-bottom: 15px;
   padding-top: 20px;
   max-width: 600px;
 }
@@ -75,4 +76,7 @@ input[type="submit"]:hover {
   cursor: pointer;
   transition: all 300ms ease-in-out;
   color: green;
+}
+.open-source {
+  color: #70757a;
 }
