@@ -1,5 +1,4 @@
 function displayTemp(response) {
-  //let apiURL = function
   let strong = document.querySelector("strong");
   let humidity = document.querySelector("#humidity");
   let wind = document.querySelector("#wind");
@@ -7,7 +6,7 @@ function displayTemp(response) {
   strong.innerHTML = Math.round(response.data.main.temp);
   humidity.innerHTML = Math.round(response.data.main.humidity);
   wind.innerHTML = Math.round(response.data.wind.speed);
-  state.innerHTML = response.data.weather.description;
+  state.innerHTML = response.data.weather[0].description;
 }
 
 function search(event) {
@@ -19,37 +18,48 @@ function search(event) {
 
 function showTime(Date) {
   let days = [
+    "Sunday",
     "Monday",
     "Tuesday",
     "Wednesday",
     "Thursday",
     "Friday",
     "Saturday",
-    "Sunday",
   ];
+  let months = [
+    "Jan.",
+    "Feb.",
+    "Mar.",
+    "Apr.",
+    "May.",
+    "June.",
+    "July.",
+    "Aug.",
+    "Sept.",
+    "Oct.",
+    "Nov.",
+    "Dec.",
+  ];
+  let month = months[now.getMonth()];
   let day = days[now.getDay()];
+  let date = now.getDate();
   let hour = now.getHours();
-  console.log(hour);
   let min = now.getMinutes();
-  console.log(min);
-  let htmlDay = document.querySelector("#day");
-  let htmlHour = document.querySelector("#hour");
-  let htmlMin = document.querySelector("#min");
-  htmlDay.innerHTML = day;
-  htmlHour.innerHTML = hour;
-  htmlMin.innerHTML = min;
+  let dayElement = document.querySelector("#current-date");
+  let timeElement = document.querySelector("#current-time");
+  dayElement.innerHTML = `${day}, ${month} ${date}th`;
+  timeElement.innerHTML = `${hour}:${min}`;
 }
 
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", search);
 
 let apiKey = "7d5433d322af5ac78f642274f8113911";
-//let city = document.querySelector("#search-city").value;
-let apiURL = `https://api.openweathermap.org/data/2.5/weather?q=tokyo&appid=${apiKey}&units=metric`;
+let city = "paris";
+let apiURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
 console.log(apiURL);
 
 axios.get(apiURL).then(displayTemp);
 
 let now = new Date();
-let time = document.querySelector("#time");
-time.innerHTML = showTime(now);
+showTime(now);
