@@ -17,13 +17,6 @@ function displayTemp(response) {
   icon.setAttribute("alt", response.data.weather[0].descriptions);
 }
 
-function search(event) {
-  event.preventDefault();
-  let h1 = document.querySelector("h1");
-  let enteredCity = document.querySelector("#search-city");
-  h1.innerHTML = enteredCity.value;
-}
-
 function showTime(Date) {
   let days = [
     "Sunday",
@@ -65,15 +58,21 @@ function showTime(Date) {
   timeElement.innerHTML = `${hour}:${min}`;
 }
 
-let form = document.querySelector("#search-form");
-form.addEventListener("submit", search);
+function search(city) {
+  let apiKey = "7d5433d322af5ac78f642274f8113911";
+  let apiURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+  console.log(apiURL);
+  axios.get(apiURL).then(displayTemp);
+}
 
-let apiKey = "7d5433d322af5ac78f642274f8113911";
-let city = "tokyo";
-let apiURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
-console.log(apiURL);
-
-axios.get(apiURL).then(displayTemp);
+function submit(event) {
+  event.preventDefault();
+  let cityElement = document.querySelector("#search-city");
+  search(cityElement.value);
+}
 
 let now = new Date();
 showTime(now);
+
+let form = document.querySelector("#search-form");
+form.addEventListener("submit", submit);
