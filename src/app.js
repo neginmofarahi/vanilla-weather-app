@@ -71,8 +71,20 @@ function submit(event) {
   search(cityElement.value);
 }
 
+function convertTemp(event) {
+  event.preventDefault();
+  let strongElement = document.querySelector("strong");
+  //strongElement = strongElement.value;
+  console.log(strongElement.value);
+  //console.log(displayTemp(response.data.main.temp));
+  //strongElement.innerHTML = displayTemp(response.data.main.temp) * 1.8 + 32;
+}
+
 let now = new Date();
 showTime(now);
 
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", submit);
+
+let farenhitElement = document.querySelector("#farenhit");
+farenhitElement.addEventListener("click", convertTemp);
