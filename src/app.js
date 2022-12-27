@@ -15,6 +15,8 @@ function displayTemp(response) {
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
   icon.setAttribute("alt", response.data.weather[0].descriptions);
+
+  celsius = response.data.main.temp;
 }
 
 function showTime(Date) {
@@ -71,14 +73,23 @@ function submit(event) {
   search(cityElement.value);
 }
 
-/*function convertTemp(event) {
+function convertTempToFarenhit(event) {
   event.preventDefault();
   let strongElement = document.querySelector("strong");
-  //strongElement = strongElement.value;
-  console.log(strongElement.value);
-  //console.log(displayTemp(response.data.main.temp));
-  //strongElement.innerHTML = displayTemp(response.data.main.temp) * 1.8 + 32;
-}*/
+  strongElement.innerHTML = Math.round(celsius * 1.8 + 32);
+  farenhitElement.classList.add("active");
+  celsiusElement.classList.remove("active");
+}
+
+function convertTempToCelsius(event) {
+  event.preventDefault();
+  let strongElement = document.querySelector("strong");
+  strongElement.innerHTML = Math.round(celsius);
+  celsiusElement.classList.add("active");
+  farenhitElement.classList.remove("active");
+}
+
+let celsius = null;
 
 let now = new Date();
 showTime(now);
@@ -86,5 +97,8 @@ showTime(now);
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", submit);
 
-/*let farenhitElement = document.querySelector("#farenhit");
-farenhitElement.addEventListener("click", convertTemp);*/
+let farenhitElement = document.querySelector("#farenhit");
+farenhitElement.addEventListener("click", convertTempToFarenhit);
+
+let celsiusElement = document.querySelector("#celsius");
+celsiusElement.addEventListener("click", convertTempToCelsius);
